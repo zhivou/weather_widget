@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
   end
 
   def weather_report
+    render json: OpenWeatherHelper::MiniSDK.new(coordinates_permit[:latitude], coordinates_permit[:longitude]).call_weather
   end
 
   private
