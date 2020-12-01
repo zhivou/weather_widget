@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Container from "./Container";
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Hello I am Ruby on Rails Gem. Everything looks good.
+        <Container/>
       </div>
     );
   }
@@ -17,5 +18,5 @@ class App extends React.Component {
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <App name="React" />, document.getElementById('welcome-container'))
+    <App name="React" />, document.getElementById('show_ror_widget'))
 });
