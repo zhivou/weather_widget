@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :static_pages, only: [], path: '' do
     collection do
       get 'index'
+      get 'show_ror_widget'
     end
   end
 end
