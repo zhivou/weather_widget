@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from "axios";
+import spinner from './spinner.gif'
 
 class GeoFindMe extends React.Component {
   constructor(props) {
@@ -63,9 +64,14 @@ class GeoFindMe extends React.Component {
       });
   }
 
+  render_simple_spinner() {
+    if (this.state.loading) { return <img src={ spinner } alt="loading..." /> }
+    if (!this.state.loading) { return 'Current Weather' }
+  }
+
   render() {
     return (
-      <button className="btn text-white btn-block" onClick={ this.handleFindMe }>Current Weather</button>
+      <button className="btn text-white btn-block" onClick={ this.handleFindMe }>{ this.render_simple_spinner() }</button>
     )
   }
 }
