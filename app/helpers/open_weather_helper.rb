@@ -13,7 +13,7 @@ module OpenWeatherHelper
 
     def call_weather
       uri = URI(BASE_URL)
-      params = { lat: @lat, lon: @lon, appid: APPID }
+      params = { lat: @lat, lon: @lon, appid: APPID, units: 'imperial' }
       uri.query = URI.encode_www_form(params)
 
       JSON.parse(Net::HTTP.get(uri))

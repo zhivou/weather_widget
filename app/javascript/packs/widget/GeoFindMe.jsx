@@ -57,6 +57,7 @@ class GeoFindMe extends React.Component {
       .then( res => {
         console.log(`Map this prop up to Container ${res.data}`);
         this.setState({ loading: false });
+        this.props.mapWeatherReport(res.data);
       })
       .catch( err => {
         console.log(err);
