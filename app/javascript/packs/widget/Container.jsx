@@ -1,4 +1,5 @@
 import React from 'react';
+import GeoFindMe from "./GeoFindMe";
 
 class Container extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Container extends React.Component {
           </div>
         </div>
         <div className="card-foote bg-dark">
-          <button className="btn text-white btn-block">Current Weather</button>
+         <GeoFindMe/>
         </div>
       </div>
     );
