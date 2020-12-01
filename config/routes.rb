@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get 'index'
       get 'show_ror_widget'
+      post 'weather_report'
     end
   end
 end

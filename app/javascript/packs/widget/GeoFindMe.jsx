@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from "axios";
 
 class GeoFindMe extends React.Component {
   constructor(props) {
@@ -7,7 +8,8 @@ class GeoFindMe extends React.Component {
       latitude: '',
       longitude: '',
       mapLink: '',
-      status: 'Idle'
+      status: 'Idle',
+      loading: false
     };
     this.handleFindMe = this.handleFindMe.bind(this);
     this.success = this.success.bind(this);
@@ -33,11 +35,32 @@ class GeoFindMe extends React.Component {
       longitude: longitude,
       mapLink: `https://www.openstreetmap.org/#map=18/${ latitude }/${ longitude }`
     });
-
+    this.middleware_weather_ajax()
   }
 
   error() {
     this.setState({ status: 'Unable to retrieve your location' });
+  }
+
+  middleware_weather_ajax(){
+    this.setState({ loading: true });
+    const url = '/weather_report';
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
+
+    axios.post(url, {
+      coordinates:{
+        latitude: this.state.latitude,
+        longitude: this.state.longitude
+      }
+    })
+      .then( res => {
+        console.log(`Map this prop up to Container ${res.data}`);
+        this.setState({ loading: false });
+      })
+      .catch( err => {
+        console.log(err);
+        this.setState({ loading: false });
+      });
   }
 
   render() {

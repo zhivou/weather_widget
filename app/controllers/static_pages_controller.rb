@@ -6,4 +6,13 @@ class StaticPagesController < ApplicationController
   # Both Front and Back handled by Rails.
   def show_ror_widget
   end
+
+  def weather_report
+  end
+
+  private
+  def coordinates_permit
+    params.require(:coordinates).permit(:latitude, :longitude)
+  end
 end
+
